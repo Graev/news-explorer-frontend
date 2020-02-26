@@ -1,0 +1,10 @@
+.footer__icon-link {
+  margin-right: 30px;
+
+  width: 20px;
+  height: 20px;
+}
+
+.footer__icon-link:last-child {
+  margin-right: 0px;
+}

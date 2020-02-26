@@ -1,0 +1,23 @@
+.author__author-img {
+  height: 32vw;
+  width: 32vw;
+
+  margin-left: 104px;
+  margin-right: 56px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .author__author-img {
+    margin-left: 40px;
+    margin-right: 32px;
+    margin-top: 61px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .author__author-img {
+    width: calc(100vw - 48px);
+    height: calc(100vw - 48px);
+    margin: auto;
+  }
+}

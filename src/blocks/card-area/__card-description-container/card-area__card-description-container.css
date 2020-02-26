@@ -1,0 +1,19 @@
+.card-area__card-description-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 270px;
+  max-height: 304px;
+
+  padding: 24px;
+  padding-top: 20px;
+  padding-bottom: 54px;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__card-description-container {
+    padding: 16px;
+    padding-bottom: 48px;
+    height: 270px;
+  }
+}

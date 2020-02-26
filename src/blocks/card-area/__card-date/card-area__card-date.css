@@ -1,0 +1,11 @@
+.card-area__card-date {
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.33;
+  color: #b6bcbf;
+
+  margin: 0px;
+  margin-bottom: 12px;
+}

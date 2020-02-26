@@ -1,0 +1,7 @@
+.header__menu-point_active {
+  border-bottom: 3px solid #fff;
+}
+
+.header_lk .header__menu-point_active {
+  border-bottom: 3px solid #1a1b22;
+}

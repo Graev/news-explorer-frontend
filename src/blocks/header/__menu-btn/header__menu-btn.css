@@ -1,0 +1,18 @@
+.header__menu-btn {
+  width: 24px;
+  height: 24px;
+
+  background-image: url("../../../images/menu.svg");
+
+  background-size: cover;
+}
+
+.header_lk .header__menu-btn {
+  background-image: url("../../../images/menu-lk.svg");
+}
+
+@media all and (min-width: 767px) {
+  .header__menu-btn {
+    display: none;
+  }
+}

@@ -1,0 +1,22 @@
+.card-area__card-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(224px, 400px));
+  gap: 16px;
+
+  flex-wrap: wrap;
+
+  justify-content: center;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__card-container {
+    gap: 8px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .card-area__card-container {
+    gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 288px));
+  }
+}

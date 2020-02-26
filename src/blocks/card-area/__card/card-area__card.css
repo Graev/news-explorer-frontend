@@ -1,0 +1,29 @@
+.card-area__card {
+  display: flex;
+  flex-direction: column;
+  min-height: 420px;
+  max-height: 576px;
+  background-color: #fff;
+  box-sizing: border-box;
+  position: relative;
+
+  border-radius: 16px;
+}
+
+.card-area__card:hover {
+  box-shadow: 0px 40px 58px -58px rgba(8, 29, 45, 0.1);
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__card {
+    min-width: 224px;
+    max-width: 400px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .card-area__card {
+    min-width: 240px;
+    max-width: 288px;
+  }
+}

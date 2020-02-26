@@ -1,0 +1,7 @@
+.header.header_popup {
+  z-index: 6;
+}
+
+.header_popup > .header__menu-btn {
+  background-image: url("../../../images/close-popup.svg");
+}

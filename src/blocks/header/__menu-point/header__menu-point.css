@@ -1,0 +1,44 @@
+@import "./_active/header__menu-point_active.css";
+
+.header__menu-point {
+  display: flex;
+  margin-left: 34px;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+
+  color: inherit;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  color: #b6bcbf;
+}
+
+.header__menu-point_active {
+  border-bottom: 3px solid #fff;
+  pointer-events: none;
+  cursor: default;
+  color: inherit;
+}
+
+.header__menu-point:nth-child(2) {
+  display: none;
+}
+
+.header__menu-point:first-child {
+  margin-left: 0px;
+}
+
+.header__menu-point > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .header__menu-point {
+    font-size: 0.8em;
+    line-height: 1.5;
+  }
+}

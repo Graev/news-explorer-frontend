@@ -1,0 +1,21 @@
+.header__menu_auth-succes .header__auth-btn::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  background-image: url("../../../../images/logout-white.svg");
+}
+
+.header__menu_auth-succes
+  .header__menu-container
+  .header__menu-point:nth-child(2) {
+  display: flex;
+}
+
+.header_lk .header__menu_auth-succes .header__auth-btn::after {
+  content: "";
+  width: 24px;
+  height: 24px;
+  margin-left: 4px;
+  background-image: url("../../../../images/logout-black.svg");
+}

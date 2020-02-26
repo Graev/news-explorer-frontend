@@ -1,0 +1,18 @@
+@font-face {
+  src: url("../vendor/fonts/roboto-regular-webfont.woff");
+  font-family: "Roboto";
+  font-weight: normal;
+}
+@font-face {
+  src: url("../vendor/fonts/roboto-medium-webfont.woff");
+  font-family: "Roboto";
+  font-weight: bold;
+}
+@font-face {
+  src: url("../vendor/fonts/robotoslab-regular-webfont.woff");
+  font-family: "Roboto Slab";
+}
+@font-face {
+  src: url("../vendor/fonts/Inter-Regular.woff");
+  font-family: "Inter";
+}

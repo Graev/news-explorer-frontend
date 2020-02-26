@@ -1,0 +1,12 @@
+@import "../vendor/normalize.css";
+@import "../vendor/font.css";
+@import "../blocks/main/main.css";
+@import "../blocks/header/header.css";
+@import "../blocks/search/search.css";
+@import "../blocks/author/author.css";
+@import "../blocks/footer/footer.css";
+@import "../blocks/card-area/card-area.css";
+@import "../blocks/circle-preloader/circle-preloader.css";
+@import "../blocks/popup/popup.css";
+@import "../blocks/overlay/overlay.css";
+@import "../blocks/menu/menu.css";

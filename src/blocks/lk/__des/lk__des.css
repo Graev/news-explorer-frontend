@@ -1,0 +1,11 @@
+.lk__des {
+  margin-top: 120px;
+  padding: 0px 104px;
+}
+
+@media all and (max-width: 767px) {
+  .lk__des {
+    padding: 8px 16px 32px;
+    margin-top: 56px;
+  }
+}

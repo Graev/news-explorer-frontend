@@ -1,0 +1,9 @@
+.footer__link-container {
+  display: flex;
+}
+
+@media all and (max-width: 768px) {
+  .footer__link-container {
+    order: 1;
+  }
+}

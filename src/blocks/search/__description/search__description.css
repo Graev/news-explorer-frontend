@@ -1,0 +1,25 @@
+.search__description {
+  color: #fff;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  margin: 0px;
+  margin-bottom: 64px;
+
+  width: 545px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .search__description {
+    width: 452px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .search__description {
+    width: 100%;
+  }
+}

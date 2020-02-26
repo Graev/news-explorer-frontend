@@ -1,0 +1,18 @@
+.card-area__not-found-message {
+  width: 356px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  text-align: center;
+
+  color: #b6bcbf;
+}
+
+@media all and (max-width: 767px) {
+  .card-area__not-found-message {
+    width: 100%;
+  }
+}
