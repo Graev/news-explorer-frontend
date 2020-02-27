@@ -1,5 +1,4 @@
 @import "./_auth-succes/header__menu_auth-succes.css";
-@import "./_active/header__menu_active.css";
 
 .header__menu {
   display: flex;
