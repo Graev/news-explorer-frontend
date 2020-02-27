@@ -18,15 +18,15 @@ const ghpages = require("gh-pages");
 const fs = require("fs");
 
 const isDev = process.env.NODE_ENV === "development";
-const pages = fs
-  .readdirSync(path.resolve(__dirname, "src"))
-  .filter(fileName => fileName.endsWith(".html"));
+
+const publicPath = "./";
 // создаем переменную для development-сборки
 module.exports = {
   entry: { main: "./src/script/index.js", lk: "./src/script/lk.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name].[chunkhash].js"
+    filename: "js/[name].[chunkhash].js",
+    publicPath: publicPath
   },
   module: {
     rules: [
@@ -39,7 +39,14 @@ module.exports = {
       {
         test: /\.css$/,
         use: [
-          isDev ? "style-loader" : MiniCssExtractPlugin.loader,
+          isDev
+            ? "style-loader"
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: "../"
+                }
+              },
           "css-loader",
           "postcss-loader"
         ],
@@ -51,9 +58,9 @@ module.exports = {
         exclude: /node_modules/ // исключает папку node_modules
       },
       {
-        test: /\.(jpg|gif|ico|svg)$/,
+        test: /\.(jpg|gif|ico)$/,
         use: [
-          "file-loader?name=../src/images/[name].[ext]", // указали папку, куда складывать изображения
+          "file-loader?name=./images/[name].[ext]", // указали папку, куда складывать изображения
           {
             loader: "image-webpack-loader",
             options: {
@@ -63,7 +70,7 @@ module.exports = {
               },
               // optipng.enabled: false will disable optipng
               optipng: {
-                enabled: true
+                enabled: false
               },
               pngquant: {
                 quality: [0.65, 0.9],
@@ -78,15 +85,16 @@ module.exports = {
               }
             }
           }
-        ]
+        ],
+        exclude: /node_modules/
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpe?g|gif|svg)$/i,
         loader: "file-loader",
         options: {
           name(file) {
-            if (process.env.NODE_ENV === "development") {
-              return "[path][name].[ext]";
+            if (!isDev) {
+              return "[name].[ext]";
             }
 
             return "[contenthash].[ext]";
@@ -98,8 +106,10 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: "[name].[contenthash].css",
-      chunkFilename: "[name].[contenthash].css"
+      filename: isDev ? "style/[name].[contenthash].css" : "style/[name].css",
+      chunkFilename: isDev
+        ? "style/[name].[contenthash].css"
+        : "style/[name].css"
     }),
     new OptimizeCssAssetsPlugin({
       assetNameRegExp: /\.css$/g,
@@ -111,10 +121,12 @@ module.exports = {
     }), // подключите плагин после MiniCssExtractPlugin
 
     new HtmlWebpackPlugin({
+      inject: false,
       template: `./src/index.html`,
       filename: "index.html"
     }),
     new HtmlWebpackPlugin({
+      inject: false,
       template: `./src/lk.html`,
       filename: "lk.html"
     }),
