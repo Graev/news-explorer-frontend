@@ -20,9 +20,9 @@
   opacity: 0.2;
 }
 
-.popup__input:invalid + .popup__error {
+/* .popup__input:invalid + .popup__error {
   opacity: 1;
-}
+} */
 
 @media all and (max-width: 767px) {
   .popup__input {

@@ -19,14 +19,16 @@ const fs = require("fs");
 
 const isDev = process.env.NODE_ENV === "development";
 
-const publicPath = "./";
+console.log("isDev", isDev);
+
+const publicPathT = "./";
 // создаем переменную для development-сборки
 module.exports = {
   entry: { main: "./src/script/index.js", lk: "./src/script/lk.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "js/[name].[chunkhash].js",
-    publicPath: publicPath
+    filename: "js/[name].[chunkhash].js"
+    // publicPath: publicPathT
   },
   module: {
     rules: [
@@ -42,10 +44,10 @@ module.exports = {
           isDev
             ? "style-loader"
             : {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  publicPath: "../"
-                }
+                loader: MiniCssExtractPlugin.loader
+                // options: {
+                //   publicPath: "../"
+                // }
               },
           "css-loader",
           "postcss-loader"
@@ -122,7 +124,7 @@ module.exports = {
 
     new HtmlWebpackPlugin({
       inject: false,
-      template: `./src/index.html`,
+      template: "./src/index.html",
       filename: "index.html"
     }),
     new HtmlWebpackPlugin({

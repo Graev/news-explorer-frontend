@@ -23,7 +23,7 @@
           <div class="header__menu-point"><a href="./lk.html">Сохранённые статьи</a></div>
         </div>
         
-        <button class="header__auth-btn">Авторизоваться</button>
+        <button class="header__auth-btn" id='auth-btn'>Авторизоваться</button>
         
       </div>
       <div class="header__menu-btn"></div>
@@ -132,20 +132,23 @@
         <button class="menu__auth-btn">Авторизоваться</button>
       </div> -->
       <div class="popup">
-        <p class="popup__title">Вход</p>
         <img class="popup__close" src="<%=require('./images/close-popup.svg')%>" alt="закрыть">
-        <form action="" class="popup__form" name="login">
-          <label for="email" class="popup__label">Email</label>
-          <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
-          <p class="popup__error">Неправильный формат email</p>
-          <label for="password" class="popup__label">Пароль</label>
-          <input type="password" name="password" class="popup__input" placeholder="Введите пароль" required>
-          <p class="popup__error">Неправильный формат пароля</p>
-          <button class="popup__button popup__button_active">Войти</button>
-        </form>
-        <p class="popup__link">или <a href="#">Зарегистрироваться</a></p>
+        <p class="popup__title">Вход</p>
+        <div class="popup__block">
+          <form action="" class="popup__form" name="login">
+            <label for="email" class="popup__label">Email</label>
+            <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+            <p class="popup__error">Неправильный формат email</p>
+            <label for="password" class="popup__label">Пароль</label>
+            <input type="password" name="password" class="popup__input" placeholder="Введите пароль" required>
+            <p class="popup__error">Неправильный формат пароля</p>
+            <p class="popup__error popup__error_btn">Пользователь не найден</p>
+            <button class="popup__button">Войти</button>
+          </form>
+          <p class="popup__link">или <a href="#" id='changePopup'>Зарегистрироваться</a></p>
+        </div>
       </div>
-      <div class="popup popup_active">
+      <!-- <div class="popup">
         <p class="popup__title">Регистрация</p>
         <img class="popup__close" src="<%=require('./images/close-popup.svg')%>" alt="закрыть">
         <form action="" class="popup__form" name="register">
@@ -165,11 +168,13 @@
         <p class="popup__link">или <a href="#">Войти</a></p>
       </div>
       <div class="popup">
-        <p class="popup__title">Пользователь успешно зарегистрирован!</p>
         <img class="popup__close" src="<%=require('./images/close-popup.svg')%>" alt="закрыть">
-        
-        <a href="#" class="popup__enter">Выполнить вход</a>
-      </div>
+        <div class="popup__block">
+          <p class="popup__title">Пользователь успешно зарегистрирован!</p>
+          
+          <a href="#" class="popup__enter">Выполнить вход</a>
+        </div> 
+      </div> -->
     </div>
     
 
