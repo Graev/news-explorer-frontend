@@ -1,6 +1,6 @@
 .card-area__contant {
   display: grid;
-  width: 100%;
+  max-width: 1360px;
   grid-column: 1fr 1fr 1fr;
   gap: 64px;
 }

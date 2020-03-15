@@ -31,14 +31,18 @@ class Popup {
       apiClass
         .singin(formData.email, formData.password)
         .then(data => {
-          console.log("рили??????", data);
-          const headerClass = new Header(true, data.name);
-          popupClass.close();
+          if (data.name) {
+            const headerClass = new Header(true, data.name);
+            this.close();
+          } else {
+            throw data;
+          }
         })
         .catch(err => {
-          console.log("err11", err);
-          if (err.status === 401) {
-            form.setServerError("Не правильный логин или пароль");
+          if (err.status === 500) {
+            form.setServerError("Ошибка на сервере");
+          } else {
+            form.setServerError("Неправильный логин или пароль");
           }
         });
     });
@@ -61,13 +65,23 @@ class Popup {
 
     const form = new Form("registr");
     form.addEventListener("submit", event => {
-      console.log("form", form);
       event.preventDefault();
       const formData = form.getInfo();
       apiClass
         .singup(formData.email, formData.password, formData.name)
-        .then(() => {
-          this._setSuccessPopup();
+        .then(data => {
+          if (data.status != 201) {
+            throw data;
+          } else {
+            this._setSuccessPopup();
+          }
+        })
+        .catch(err => {
+          if (err.status === 500) {
+            form.setServerError("Ошибка на сервере");
+          } else {
+            form.setServerError(err.message);
+          }
         });
     });
 

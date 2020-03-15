@@ -11,7 +11,6 @@ class Form {
     this.form.classList.add("popup__form");
 
     if (type == "auth") {
-      console.log("type", type);
       this.validateBoolean = {
         email: false,
         password: false
@@ -38,8 +37,8 @@ class Form {
   }
 
   setServerError(error) {
-    this.form.buttonError.textContent = error;
-    this.form.buttonError.style = "opacity: 1";
+    this.form.querySelector("#buttonError").textContent = error;
+    this.form.querySelector("#buttonError").style = "opacity: 1";
   }
 
   _createEmailBlock() {

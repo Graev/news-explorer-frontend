@@ -17,11 +17,14 @@ class Header {
   }
 
   _clickHandler() {
-    if (this.props.isLoggedIn === true) {
+    if (localStorage.getItem("token")) {
       apiClass.logout().then(e => {
         this._changeProps();
         this.render();
       });
+      if (location.pathname == "/lk.html") {
+        location = "/index.html";
+      }
     } else {
       const popupClass = new Popup();
     }

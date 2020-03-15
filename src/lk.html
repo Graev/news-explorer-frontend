@@ -25,7 +25,7 @@
             <div class="header__menu-point header__menu-point_active"><a href="./lk.html">Сохранённые статьи</a></div>
           </div>
           
-          <button class="header__auth-btn">Грета</button>
+          <button class="header__auth-btn" id='auth-btn'>Грета</button>
         </div>        
         <div class="header__menu-btn"></div>
       </header>
@@ -39,12 +39,14 @@
         <div class="card-area__card-container">
           <div class="card-area__card">
             <img src="<%=require('./images/card.png')%>" alt="" class="card-area__card-img">
+            <div class="card-area__card-head">
             <div class="card-area__card-cat">Природа</div>
             <div class="card-area__card-button">
               <div class="card-area__delete-message">Убрать из сохранённых</div>
               <div class="card-area__trash"></div>
-  
             </div>
+            </div>
+
             <div class="card-area__card-description-container">
               <p class="card-area__card-date">2 августа, 2019</p>
               <p class="card-area__card-name">Национальное достояние – парки</p>

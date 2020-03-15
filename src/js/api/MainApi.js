@@ -1,6 +1,5 @@
 class MainApi {
   constructor() {
-    console.log("object123");
     this._parametrsConnect = {
       baseUrl: "http://127.0.0.1:3005",
       header: {
@@ -13,11 +12,10 @@ class MainApi {
   }
 
   _statusRequest(res) {
-    console.log("res.ok", res);
-    if (res.ok) {
-      return res.json();
-    }
-    return Promise.reject(res);
+    // if (res.ok) {
+    return res.json();
+    // }
+    // return Promise.reject(res);
   }
 
   singup(email, password, name) {
@@ -49,7 +47,19 @@ class MainApi {
       })
     )
       .then(this._statusRequest)
-      .catch(err => console.log("singin ERROR :", err));
+      .then(data => {
+        if (data.token) {
+          localStorage.setItem("token", data.token);
+          this._parametrsConnect.header.headers[
+            "authorization"
+          ] = `Bearer ${localStorage.getItem("token")}`;
+          if (document.newsCardList) {
+            document.newsCardList.setCardUpdate();
+          }
+        }
+        return data;
+      })
+      .catch(err => console.log("err", err));
   }
 
   logout() {
@@ -58,6 +68,13 @@ class MainApi {
       Object.assign({ method: "DELETE" }, this._parametrsConnect.header)
     )
       .then(this._statusRequest)
+      .then(() => {
+        localStorage.removeItem("token");
+        delete this._parametrsConnect.header.headers.authorization;
+        if (document.newsCardList) {
+          document.newsCardList.setCardUpdate();
+        }
+      })
       .catch(err => console.log("logout ERROR :", err));
   }
 
@@ -79,18 +96,26 @@ class MainApi {
       .catch(err => console.log("getArticles ERROR :", err));
   }
 
-  createArticle(keyword, title, text, date, source, link, image) {
+  createArticle(
+    keyword,
+    title,
+    description,
+    publishedAt,
+    source,
+    url,
+    urlToImage
+  ) {
     return fetch(
       this._parametrsConnect.baseUrl + "/articles",
       Object.assign({ method: "POST" }, this._parametrsConnect.header, {
         body: JSON.stringify({
           keyword,
           title,
-          text,
-          date,
+          description,
+          publishedAt,
           source,
-          link,
-          image
+          url,
+          urlToImage
         })
       })
     )

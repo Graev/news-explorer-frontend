@@ -1,5 +1,7 @@
 class NewsApi {
-  constructor() {}
+  constructor() {
+    this.getNews = this.getNews.bind(this);
+  }
 
   _statusRequest(res) {
     if (res.ok) {
@@ -10,9 +12,9 @@ class NewsApi {
 
   getNews(word) {
     const date = new Date();
-    const from = date.toISOString().split("T")[0];
-    const toDate = from.split("-");
-    const to = new Date(toDate[0], toDate[1], toDate[2] - 7)
+    const to = date.toISOString().split("T")[0];
+    const fromDate = to.split("-");
+    const from = new Date(fromDate[0], fromDate[1] - 1, fromDate[2] - 7)
       .toISOString()
       .split("T")[0];
     const url =
@@ -20,10 +22,11 @@ class NewsApi {
       `q=${word}&` +
       `from=${from}&` +
       `to=${to}&` +
-      "country=ru&" +
+      "language=ru&" +
       "sortBy=popularity&" +
       "pageSize=100&" +
       "apiKey=2c1b8731593245bca65b7da9859ad70d";
+
     const req = new Request(url);
 
     return fetch(req)
@@ -31,3 +34,5 @@ class NewsApi {
       .catch(err => console.log("removeArticle ERROR :", err));
   }
 }
+
+export default NewsApi;

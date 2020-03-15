@@ -24,7 +24,7 @@ console.log("isDev", isDev);
 const publicPathT = "./";
 // создаем переменную для development-сборки
 module.exports = {
-  entry: { main: "./src/script/index.js", lk: "./src/script/lk.js" },
+  entry: { main: "./src/index.js", lk: "./src/saved-articles/index.js" },
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "js/[name].[chunkhash].js"
