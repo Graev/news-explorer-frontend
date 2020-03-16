@@ -6,6 +6,7 @@
 
 .header_active > .header__site-name {
   margin-left: 16px;
+  color: #ffffff;
 }
 
 .header_active > .header__menu-btn {
@@ -69,6 +70,7 @@
   pointer-events: all;
   cursor: pointer;
   color: inherit;
+  color: #ffffff;
 }
 
 .header_active > .header__menu > .header__auth-btn {
@@ -86,4 +88,8 @@
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
+}
+
+.header_active .header__menu_auth-succes .header__auth-btn:after {
+  background-image: url("../../../images/logout-white.svg");
 }

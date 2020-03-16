@@ -21,7 +21,7 @@ const isDev = process.env.NODE_ENV === "development";
 
 console.log("isDev", isDev);
 
-const publicPathT = "./";
+const publicPathT = "/";
 // создаем переменную для development-сборки
 module.exports = {
   entry: { main: "./src/index.js", lk: "./src/saved-articles/index.js" },
@@ -44,10 +44,10 @@ module.exports = {
           isDev
             ? "style-loader"
             : {
-                loader: MiniCssExtractPlugin.loader
-                // options: {
-                //   publicPath: "../"
-                // }
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: "../"
+                }
               },
           "css-loader",
           "postcss-loader"
@@ -60,7 +60,7 @@ module.exports = {
         exclude: /node_modules/ // исключает папку node_modules
       },
       {
-        test: /\.(jpg|gif|ico)$/,
+        test: /\.(gif|ico)$/,
         use: [
           "file-loader?name=./images/[name].[ext]", // указали папку, куда складывать изображения
           {

@@ -18,7 +18,7 @@ class NewsApi {
       .toISOString()
       .split("T")[0];
     const url =
-      "http://newsapi.org/v2/everything?" +
+      "https://newsapi.org/v2/everything?" +
       `q=${word}&` +
       `from=${from}&` +
       `to=${to}&` +

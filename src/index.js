@@ -4,6 +4,9 @@ import Header from "./js/components/Header";
 import MainApi from "./js/api/MainApi";
 import NewsApi from "./js/api/NewsApi";
 import NewsCardList from "./js/components/NewsCardList";
+import mobileMenu from "./js/utils/mobileMenu";
+
+mobileMenu();
 
 const newsApiClass = new NewsApi();
 // const popupClass = new Popup();
@@ -31,9 +34,21 @@ document.querySelector(".search__btn").addEventListener("click", () => {
     data.key = keyword;
 
     if (data.status == "ok" && data.totalResults) {
-      document.newsCardList.setCardsToList(data.articles, data.key);
-      document.newsCardList.renderResults();
-      document.newsCardList.createCardAreaResults();
+      apiClass
+        .getArticles()
+        .then(userArticles => {
+          document.newsCardList.setCardsToList(
+            data.articles,
+            data.key,
+            userArticles.data
+          );
+          document.newsCardList.renderResults();
+          document.newsCardList.createCardAreaResults();
+        })
+        .catch(err => {
+          console.log("err", err);
+          document.newsCardList.renderError();
+        });
     } else {
       document.newsCardList.renderError();
     }

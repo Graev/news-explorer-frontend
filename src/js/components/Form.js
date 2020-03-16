@@ -1,7 +1,5 @@
 import createElem from "../utils/createElem";
 import MainApi from "../api/MainApi";
-import Popup from "./Popup";
-import Header from "./Header";
 
 const apiClass = new MainApi();
 

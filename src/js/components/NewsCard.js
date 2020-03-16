@@ -1,12 +1,14 @@
 import createElem from "../utils/createElem";
 import MainApi from "../api/MainApi";
+import Popup from "./Popup";
 
 const apiClass = new MainApi();
 
 class NewsCard {
-  constructor(keyword, data) {
+  constructor(keyword, data, userArticles) {
     this.data = data;
     this.keyword = keyword;
+    this.userArticles = userArticles;
     this.card = createElem("div", "card-area__card");
 
     this.datePublished = this.data.publishedAt;
@@ -28,6 +30,7 @@ class NewsCard {
     this.idCard = null;
     this._setCard();
     this.card.renderIcon = this.renderIcon.bind(this);
+    this.card.addEventListener("click", this._clickHandler.bind(this));
     return this.card;
   }
 
@@ -48,11 +51,27 @@ class NewsCard {
         this.cardHead.append(cardCat);
         this.cardHead.append(this.cardButton);
       } else if (localStorage.getItem("token")) {
-        this.cardButton.innerHTML = "";
-        const icon = createElem("div", "card-area__bookmark");
-        icon.addEventListener("click", this._clickHandler.bind(this));
-        this.cardButton.append(icon);
-        this.cardHead.append(this.cardButton);
+        let oldCard = Object.keys(this.userArticles).find(elem => {
+          return this.userArticles[elem].url == this.data.url;
+        });
+        oldCard = this.userArticles[oldCard];
+
+        if (!oldCard) {
+          this.cardButton.innerHTML = "";
+          const icon = createElem("div", "card-area__bookmark");
+
+          this.cardButton.append(icon);
+          this.cardHead.append(this.cardButton);
+        } else {
+          this.idCard = oldCard._id;
+          this.cardButton.innerHTML = "";
+          const icon = createElem("div", "card-area__bookmark");
+          icon.classList.add("card-area__bookmark_active");
+          this.savedCard = true;
+
+          this.cardButton.append(icon);
+          this.cardHead.append(this.cardButton);
+        }
       } else {
         this.cardButton.innerHTML = "";
         const message = createElem(
@@ -68,34 +87,50 @@ class NewsCard {
     }
   }
 
-  _clickHandler() {
-    if (this.savedCard) {
-      apiClass.removeArticle(this.idCard).then(date => {
-        this.savedCard = false;
-        this.idCard = null;
-        this.cardButton.children[0].classList.remove(
-          "card-area__bookmark_active"
-        );
-      });
+  _clickHandler(event) {
+    if (
+      event.target.getAttribute("class").includes("card-area__card-button") ||
+      event.target.getAttribute("class").includes("card-area__bookmark") ||
+      event.target.getAttribute("class").includes("card-area__trash")
+    ) {
+      if (this.data._id) {
+        apiClass.removeArticle(this.data._id).then(date => {
+          this.card.remove();
+        });
+      } else if (localStorage.getItem("token")) {
+        if (this.savedCard) {
+          apiClass.removeArticle(this.idCard).then(date => {
+            this.savedCard = false;
+            this.idCard = null;
+            this.cardButton.children[0].classList.remove(
+              "card-area__bookmark_active"
+            );
+          });
+        } else {
+          apiClass
+            .createArticle(
+              this.keyword,
+              this.data.title,
+              this.data.description,
+              this.datePublished,
+              this.data.source,
+              this.data.url,
+              this.data.urlToImage
+            )
+            .then(data => {
+              this.savedCard = true;
+              this.idCard = data.data._id;
+              this.cardButton.children[0].classList.add(
+                "card-area__bookmark_active"
+              );
+            })
+            .catch(err => console.log("addArticleError: ", err));
+        }
+      } else {
+        const popupClass = new Popup();
+      }
     } else {
-      apiClass
-        .createArticle(
-          this.keyword,
-          this.data.title,
-          this.data.description,
-          this.datePublished,
-          this.data.source,
-          this.data.url,
-          this.data.urlToImage
-        )
-        .then(data => {
-          this.savedCard = true;
-          this.idCard = data.data._id;
-          this.cardButton.children[0].classList.add(
-            "card-area__bookmark_active"
-          );
-        })
-        .catch(err => console.log("addArticleError: ", err));
+      window.open(this.data.url, "_blank");
     }
   }
 

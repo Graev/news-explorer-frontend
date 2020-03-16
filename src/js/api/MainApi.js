@@ -1,7 +1,7 @@
 class MainApi {
   constructor() {
     this._parametrsConnect = {
-      baseUrl: "http://api.orevo.xyz/",
+      baseUrl: "https://api.orevo.xyz",
       header: {
         credentials: "include",
         headers: {

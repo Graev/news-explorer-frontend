@@ -7,6 +7,7 @@ class NewsCardList {
     this.cardList = [];
     this.cardUpdate = [];
     this.data = 0;
+    this.userArticles = 0;
     this.key = 0;
     this.cardArea = document.querySelector(".card-area");
     this.cardArea.classList.add("card-area_result");
@@ -14,6 +15,7 @@ class NewsCardList {
     this.cardArea.innerHTML = "";
     this.oldCount = 0;
     this.newCount = 3;
+    this.button = "";
   }
 
   renderLoader() {
@@ -47,8 +49,8 @@ class NewsCardList {
     this.cardArea.append(message);
   }
 
-  _addCard(keyword, card) {
-    const cardElem = new NewsCard(keyword, card);
+  _addCard(keyword, card, userArticles) {
+    const cardElem = new NewsCard(keyword, card, userArticles);
     this.cardList.push(cardElem);
     this.cardUpdate.push(cardElem.renderIcon);
   }
@@ -59,23 +61,26 @@ class NewsCardList {
     });
   }
 
-  setCardsToList(data, key) {
+  setCardsToList(data, key, userArticles) {
     this.dataLength = data.length;
     if (!this.data) {
       this.data = data;
+    }
+    if (!this.userArticles) {
+      this.userArticles = userArticles;
     }
 
     if (key) {
       this.key = key;
       Object.keys(this.data).forEach(elem => {
-        if (elem >= this.oldCount && elem <= this.newCount) {
-          this._addCard(key, this.data[elem]);
+        if (elem >= this.oldCount && elem < this.newCount) {
+          this._addCard(key, this.data[elem], userArticles);
         }
       });
     } else {
       Object.keys(this.data).forEach(elem => {
-        if (elem >= this.oldCount && elem <= this.newCount) {
-          this._addCard(this.data[elem].keyword, this.data[elem]);
+        if (elem >= this.oldCount && elem < this.newCount) {
+          this._addCard(this.data[elem].keyword, this.data[elem], userArticles);
         }
       });
     }
@@ -89,28 +94,33 @@ class NewsCardList {
   }
 
   showMore() {
-    this.oldCount = this.newCount - 1;
-    this.newCount = this.oldCount + 4;
+    this.oldCount = this.newCount;
+    this.newCount = this.oldCount + 3;
     if (this.key) {
-      this.setCardsToList(this.data, this.key);
+      this.setCardsToList(this.data, this.key, this.userArticles);
+    } else {
+      this.setCardsToList(this.data);
     }
-    this.setCardsToList(this.data);
 
     this.renderResults();
+
+    if (!(this.data.length > 3) || !(this.newCount < this.data.length)) {
+      this.button.remove();
+    }
   }
 
   createCardAreaResults() {
     this.cardArea.innerHTML = "";
     const contant = createElem("div", "card-area__contant");
     const title = createElem("h2", "card-area__title", "Результаты поиска");
-    const button = createElem("button", "card-area__btn", "Показать еще");
+    this.button = createElem("button", "card-area__btn", "Показать еще");
 
-    button.addEventListener("click", this.showMore.bind(this));
+    this.button.addEventListener("click", this.showMore.bind(this));
 
     contant.append(title);
     contant.append(this.cardContainer);
     if (this.data.length > 3 || this.newCount < this.data.length) {
-      contant.append(button);
+      contant.append(this.button);
     }
 
     this.cardArea.append(contant);

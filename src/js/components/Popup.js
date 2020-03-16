@@ -29,7 +29,7 @@ class Popup {
 
       const formData = form.getInfo();
       apiClass
-        .singin(formData.email, formData.password)
+        .singin(formData.email.toLowerCase(), formData.password)
         .then(data => {
           if (data.name) {
             const headerClass = new Header(true, data.name);
@@ -68,7 +68,7 @@ class Popup {
       event.preventDefault();
       const formData = form.getInfo();
       apiClass
-        .singup(formData.email, formData.password, formData.name)
+        .singup(formData.email.toLowerCase(), formData.password, formData.name)
         .then(data => {
           if (data.status != 201) {
             throw data;
@@ -111,14 +111,24 @@ class Popup {
     this.popupBlock.append(a);
   }
 
+  _escButtonHandler(e) {
+    if (e.keyCode === 27) {
+      this.close();
+    }
+  }
+
   open() {
     document.querySelector(".overlay").classList.add("overlay_active");
     document.querySelector(".popup").classList.add("popup_active");
+    document.querySelector(".overlay").addEventListener("click", this.close);
+    document.addEventListener("keydown", this._escButtonHandler.bind(this));
   }
 
   close() {
+    document.querySelector(".overlay").removeEventListener("click", this.close);
     document.querySelector(".overlay").classList.remove("overlay_active");
     document.querySelector(".popup").classList.remove("popup_active");
+    document.removeEventListener("keydown", this._escButtonHandler);
   }
 }
 

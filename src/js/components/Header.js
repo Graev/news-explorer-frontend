@@ -17,14 +17,15 @@ class Header {
   }
 
   _clickHandler() {
+    document.querySelector(".header").classList.remove("header_active");
     if (localStorage.getItem("token")) {
       apiClass.logout().then(e => {
         this._changeProps();
         this.render();
+        if (location.pathname == "/lk.html") {
+          location = "/index.html";
+        }
       });
-      if (location.pathname == "/lk.html") {
-        location = "/index.html";
-      }
     } else {
       const popupClass = new Popup();
     }
