@@ -1,7 +1,7 @@
 @import "./_btn/popup__error_btn.css";
 
 .popup__error {
-  font-family: Inter;
+  font-family: Inter, Arial;
   font-style: normal;
   font-weight: normal;
   font-size: 0.6rem;

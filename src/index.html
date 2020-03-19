@@ -18,10 +18,10 @@
     <header class="header">
       <div class="header__site-name">NewsExplorer</div>
       <div class="header__menu">
-        <div class="header__menu-container">
-          <div class="header__menu-point header__menu-point_active"><a href="./index.html">Главная</a></div>
-          <div class="header__menu-point"><a href="./lk.html">Сохранённые статьи</a></div>
-        </div>
+        <menu class="header__menu-container">
+          <li class="header__menu-point header__menu-point_active"><a href="./index.html">Главная</a></li>
+          <li class="header__menu-point"><a href="./lk.html">Сохранённые статьи</a></li>
+        </menu>
         
         <button class="header__auth-btn" id='auth-btn'>Авторизоваться</button>
         
@@ -31,7 +31,7 @@
     <div class="search">
       <h1 class="search__title">Что в мире <br>творится?</h1>
       <h2 class="search__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
-      <div class="search__input-container"><input type="text" class="search__input" placeholder="Введите тему новости" form="search"><button form="search" class="search__btn">Искать</button></div>
+      <div class="search__input-container"><form name="search"><input type="text" class="search__input" placeholder="Введите тему новости" ><button class="search__btn">Искать</button></form></div>
       
     </div>
     <div class="card-area"> 
@@ -61,7 +61,6 @@
           Как мы фиксим наши баги,<br>
           Строим график сверху вниз,<br>
           Как мы выпустим релиз.<br>
-          
           </div>
       </div>
     </div>
@@ -72,12 +71,12 @@
         <img class="popup__close" src="<%=require('./images/close-popup.svg')%>" alt="закрыть">
         <p class="popup__title">Вход</p>
         <div class="popup__block">
-          <form action="" class="popup__form" name="login">
+          <form class="popup__form" name="login">
             <label for="email" class="popup__label">Email</label>
-            <input type="email" name="email" class="popup__input" placeholder="Введите почту" required>
+            <input type="email" id="email" name="email" class="popup__input" placeholder="Введите почту" required>
             <p class="popup__error">Неправильный формат email</p>
             <label for="password" class="popup__label">Пароль</label>
-            <input type="password" name="password" class="popup__input" placeholder="Введите пароль" required>
+            <input type="password" id="password" name="password" class="popup__input" placeholder="Введите пароль" required>
             <p class="popup__error">Неправильный формат пароля</p>
             <p class="popup__error popup__error_btn">Пользователь не найден</p>
             <button class="popup__button">Войти</button>

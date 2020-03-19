@@ -26,7 +26,8 @@ if (localStorage.getItem("token")) {
   const headerClass = new Header(false, null);
 }
 
-document.querySelector(".search__btn").addEventListener("click", () => {
+document.forms.search.addEventListener("submit", e => {
+  e.preventDefault();
   document.newsCardList = new NewsCardList();
   const keyword = document.querySelector(".search__input").value;
   document.newsCardList.renderLoader();

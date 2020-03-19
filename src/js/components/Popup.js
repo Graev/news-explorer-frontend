@@ -120,7 +120,11 @@ class Popup {
   open() {
     document.querySelector(".overlay").classList.add("overlay_active");
     document.querySelector(".popup").classList.add("popup_active");
-    document.querySelector(".overlay").addEventListener("click", this.close);
+    document.querySelector(".overlay").addEventListener("click", e => {
+      if (e.target.classList.contains("overlay")) {
+        this.close();
+      }
+    });
     document.addEventListener("keydown", this._escButtonHandler.bind(this));
   }
 

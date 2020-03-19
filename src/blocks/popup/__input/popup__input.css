@@ -9,7 +9,7 @@
 }
 
 .popup__input::placeholder {
-  font-family: "Inter";
+  font-family: "Inter", Arial;
   font-style: normal;
   font-weight: normal;
   font-size: 0.7em;
