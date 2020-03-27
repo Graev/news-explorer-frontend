@@ -1,0 +1,3 @@
+.search__input.search__input_error::placeholder {
+  color: #ff0000;
+}

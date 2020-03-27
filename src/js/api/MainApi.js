@@ -28,12 +28,7 @@ class MainApi {
           name
         })
       })
-    )
-      .then(this._statusRequest)
-      .catch(err => {
-        console.log("singup ERROR :", err);
-        return err;
-      });
+    ).then(this._statusRequest);
   }
 
   singin(email, password) {
@@ -54,12 +49,11 @@ class MainApi {
             "authorization"
           ] = `Bearer ${localStorage.getItem("token")}`;
           if (document.newsCardList) {
-            document.newsCardList.setCardUpdate();
+            document.newsCardList.setCardsUpdate();
           }
         }
         return data;
-      })
-      .catch(err => console.log("err", err));
+      });
   }
 
   logout() {
@@ -72,28 +66,23 @@ class MainApi {
         localStorage.removeItem("token");
         delete this._parametrsConnect.header.headers.authorization;
         if (document.newsCardList) {
-          document.newsCardList.setCardUpdate();
+          document.newsCardList.setCardsUpdate();
         }
-      })
-      .catch(err => console.log("logout ERROR :", err));
+      });
   }
 
   getUserData() {
     return fetch(
       this._parametrsConnect.baseUrl + "/users/me",
       Object.assign({}, this._parametrsConnect.header)
-    )
-      .then(this._statusRequest)
-      .catch(err => console.log("getUserData ERROR :", err));
+    ).then(this._statusRequest);
   }
 
   getArticles() {
     return fetch(
       this._parametrsConnect.baseUrl + "/articles",
       Object.assign({}, this._parametrsConnect.header)
-    )
-      .then(this._statusRequest)
-      .catch(err => console.log("getArticles ERROR :", err));
+    ).then(this._statusRequest);
   }
 
   createArticle(
@@ -118,18 +107,14 @@ class MainApi {
           urlToImage
         })
       })
-    )
-      .then(this._statusRequest)
-      .catch(err => console.log("createArticle ERROR :", err));
+    ).then(this._statusRequest);
   }
 
   removeArticle(id) {
     return fetch(
       this._parametrsConnect.baseUrl + "/articles/" + id,
       Object.assign({ method: "DELETE" }, this._parametrsConnect.header)
-    )
-      .then(this._statusRequest)
-      .catch(err => console.log("removeArticle ERROR :", err));
+    ).then(this._statusRequest);
   }
 }
 

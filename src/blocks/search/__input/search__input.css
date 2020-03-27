@@ -1,3 +1,5 @@
+@import "./_error/search__input_error.css";
+
 .search__input {
   width: 608px;
   height: 64px;

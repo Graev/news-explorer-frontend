@@ -1,37 +1,15 @@
 import createElem from "../utils/createElem";
-import MainApi from "../api/MainApi";
-
-const apiClass = new MainApi();
+import clearElem from "../utils/clearElem";
 
 class Form {
-  constructor(type) {
+  constructor() {
     this.form = document.createElement("form");
     this.form.classList.add("popup__form");
+  }
 
-    if (type == "auth") {
-      this.validateBoolean = {
-        email: false,
-        password: false
-      };
-
-      this._setAuthForm();
-    } else if (type == "registr") {
-      this.validateBoolean = {
-        email: false,
-        password: false,
-        name: false
-      };
-      this._setRegisForm();
-    } else {
-      console.log("неправильные входные данные");
-    }
-
-    this.form.addEventListener("input", this._validateInputElement.bind(this));
-
-    this.form.getInfo = this.getInfo.bind(this);
-    this.form.setServerError = this.setServerError.bind(this);
-
-    return this.form;
+  _cleanForm() {
+    //зависит от тз, с одной стороны, удобно, если в форме сохраняется введенное, на случай случайного закрытия, но вдруг будет необходимо
+    clearElem(this.form);
   }
 
   setServerError(error) {
@@ -99,62 +77,6 @@ class Form {
     this.form.append(nameError);
   }
 
-  _setAuthForm() {
-    this._createEmailBlock();
-    this._createPasswordBlock();
-
-    const buttonError = createElem(
-      "p",
-      "popup__error",
-      "Такой пользователь уже есть"
-    );
-    buttonError.id = "buttonError";
-    buttonError.classList.add("popup__error_btn");
-
-    const button = createElem("button", "popup__button", "Войти");
-
-    this.form.append(buttonError);
-    this.form.append(button);
-
-    // const p = createElem("p", "popup__link", "или ");
-    // const a = document.createElement("a");
-    // a.textContent = "Зарегистрироваться";
-    // a.addEventListener("click", () => {
-    //   this._setRegisForm();
-    // });
-    // p.append(a);
-  }
-
-  _setRegisForm() {
-    this._createEmailBlock();
-    this._createPasswordBlock();
-    this._createNameBlock();
-
-    const buttonError = createElem(
-      "p",
-      "popup__error",
-      "Такой пользователь уже есть"
-    );
-    buttonError.id = "buttonError";
-    buttonError.classList.add("popup__error_btn");
-
-    const button = createElem("button", "popup__button", "Зарегистрироваться");
-    // button.addEventListener('click'дописать)
-    // document.querySelector("#changePopup").textContent = "Войти";
-    // document.querySelector("#changePopup").addEventListener("click", () => {
-    //   this._setAuthForm();
-    // });
-
-    // button.addEventListener("click", event => {
-    //   event.preventDefault();
-    //   const data = this._getInfo();
-    //   apiClass.singup(data.email, data.password, data.name).then(data => {});
-    // });
-
-    this.form.append(buttonError);
-    this.form.append(button);
-  }
-
   getInfo() {
     const data = {};
     this.form.querySelectorAll("input").forEach(elem => {
@@ -211,4 +133,85 @@ class Form {
   }
 }
 
-export default Form;
+class RegisterForm extends Form {
+  constructor() {
+    super();
+    this.validateBoolean = {
+      email: false,
+      password: false,
+      name: false
+    };
+    this._setRegisForm();
+
+    this.form.addEventListener("input", this._validateInputElement.bind(this));
+
+    this.form.getInfo = this.getInfo.bind(this);
+    this.form.setServerError = this.setServerError.bind(this);
+  }
+
+  create() {
+    return this.form;
+  }
+
+  deactivBtn() {}
+
+  _setRegisForm() {
+    this._createEmailBlock();
+    this._createPasswordBlock();
+    this._createNameBlock();
+
+    const buttonError = createElem(
+      "p",
+      "popup__error",
+      "Такой пользователь уже есть"
+    );
+    buttonError.id = "buttonError";
+    buttonError.classList.add("popup__error_btn");
+
+    const button = createElem("button", "popup__button", "Зарегистрироваться");
+
+    this.form.append(buttonError);
+    this.form.append(button);
+  }
+}
+
+class LoginForm extends Form {
+  constructor() {
+    super();
+    this.validateBoolean = {
+      email: false,
+      password: false
+    };
+
+    this._setAuthForm();
+
+    this.form.addEventListener("input", this._validateInputElement.bind(this));
+
+    this.form.getInfo = this.getInfo.bind(this);
+    this.form.setServerError = this.setServerError.bind(this);
+  }
+
+  create() {
+    return this.form;
+  }
+
+  _setAuthForm() {
+    this._createEmailBlock();
+    this._createPasswordBlock();
+
+    const buttonError = createElem(
+      "p",
+      "popup__error",
+      "Такой пользователь уже есть"
+    );
+    buttonError.id = "buttonError";
+    buttonError.classList.add("popup__error_btn");
+
+    const button = createElem("button", "popup__button", "Войти");
+
+    this.form.append(buttonError);
+    this.form.append(button);
+  }
+}
+
+export { RegisterForm, LoginForm };

@@ -29,9 +29,7 @@ class NewsApi {
 
     const req = new Request(url);
 
-    return fetch(req)
-      .then(this._statusRequest)
-      .catch(err => console.log("removeArticle ERROR :", err));
+    return fetch(req).then(this._statusRequest);
   }
 }
 

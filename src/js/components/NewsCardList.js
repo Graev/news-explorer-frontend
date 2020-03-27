@@ -1,6 +1,12 @@
 import createElem from "../utils/createElem";
 import NewsCard from "./NewsCard";
 import errorImg from "../../images/not-found.svg";
+import clearElem from "../utils/clearElem";
+
+const createCard = (keyword, data, userArticles) => {
+  const card = new NewsCard(keyword, data, userArticles);
+  return card;
+};
 
 class NewsCardList {
   constructor() {
@@ -12,14 +18,15 @@ class NewsCardList {
     this.cardArea = document.querySelector(".card-area");
     this.cardArea.classList.add("card-area_result");
     this.cardContainer = createElem("div", "card-area__card-container");
-    this.cardArea.innerHTML = "";
+    clearElem(this.cardArea);
     this.oldCount = 0;
     this.newCount = 3;
     this.button = "";
   }
 
   renderLoader() {
-    this.cardArea.innerHTML = "";
+    clearElem(this.cardArea);
+
     const loader = createElem("i", "circle-preloader");
     const loaderDescription = createElem(
       "p",
@@ -31,7 +38,7 @@ class NewsCardList {
   }
 
   renderError() {
-    this.cardArea.innerHTML = "";
+    clearElem(this.cardArea);
     const img = createElem("img", "card-area__not-found-img");
     img.src = errorImg;
     const title = createElem(
@@ -50,12 +57,12 @@ class NewsCardList {
   }
 
   _addCard(keyword, card, userArticles) {
-    const cardElem = new NewsCard(keyword, card, userArticles);
+    const cardElem = createCard(keyword, card, userArticles);
     this.cardList.push(cardElem);
     this.cardUpdate.push(cardElem.renderIcon);
   }
 
-  setCardUpdate() {
+  setCardsUpdate() {
     this.cardUpdate.forEach(elem => {
       elem();
     });
@@ -109,8 +116,9 @@ class NewsCardList {
     }
   }
 
-  createCardAreaResults() {
-    this.cardArea.innerHTML = "";
+  createCardsAreaResults() {
+    clearElem(this.cardArea);
+
     const contant = createElem("div", "card-area__contant");
     const title = createElem("h2", "card-area__title", "Результаты поиска");
     this.button = createElem("button", "card-area__btn", "Показать еще");

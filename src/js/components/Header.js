@@ -1,11 +1,12 @@
-import Popup from "./Popup";
-import MainApi from "../api/MainApi";
-
-const apiClass = new MainApi();
+import { registrPopupElem } from "../../index";
 
 class Header {
-  constructor(isLoggedIn, userName) {
+  constructor(isLoggedIn, userName, mainApi) {
     this.props = { isLoggedIn, userName };
+    this.mainApi = mainApi;
+    this.headerDOM = document.querySelector(".header");
+    this.headerMenuDOM = document.querySelector(".header__menu");
+    this.authBtn = document.querySelector("#auth-btn");
     this.render();
     document
       .querySelector("#auth-btn")
@@ -17,34 +18,32 @@ class Header {
   }
 
   _clickHandler() {
-    document.querySelector(".header").classList.remove("header_active");
+    this.headerDOM.classList.remove("header_active");
     if (localStorage.getItem("token")) {
-      apiClass.logout().then(e => {
-        this._changeProps();
-        this.render();
-        if (location.pathname == "/lk.html") {
-          location = "/index.html";
-        }
-      });
+      this.mainApi
+        .logout()
+        .then(e => {
+          this._changeProps();
+          this.render();
+          if (location.pathname == "/lk.html") {
+            location = "/index.html";
+          }
+        })
+        .catch(err => console.log("logoutError: ", err));
     } else {
-      const popupClass = new Popup();
+      registrPopupElem.create();
     }
   }
 
   render() {
     if (this.props.isLoggedIn) {
-      document
-        .querySelector(".header__menu")
-        .classList.add("header__menu_auth-succes");
+      this.headerMenuDOM.classList.add("header__menu_auth-succes");
 
-      document.querySelector("#auth-btn").textContent = this.props.userName;
+      this.authBtn.textContent = this.props.userName;
     } else {
-      document
-        .querySelector(".header__menu")
-        .classList.remove("header__menu_auth-succes");
+      this.headerMenuDOM.classList.remove("header__menu_auth-succes");
 
-      document.querySelector(".header__auth-btn").textContent =
-        "Авторизоваться";
+      this.authBtn.textContent = "Авторизоваться";
     }
   }
 }

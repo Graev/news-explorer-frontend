@@ -1,8 +1,6 @@
 import createElem from "../utils/createElem";
-import MainApi from "../api/MainApi";
-import Popup from "./Popup";
-
-const apiClass = new MainApi();
+import { mainApiElem } from "../../index";
+import { registrPopupElem } from "../../index";
 
 class NewsCard {
   constructor(keyword, data, userArticles) {
@@ -94,20 +92,26 @@ class NewsCard {
       event.target.getAttribute("class").includes("card-area__trash")
     ) {
       if (this.data._id) {
-        apiClass.removeArticle(this.data._id).then(date => {
-          this.card.remove();
-        });
+        mainApiElem
+          .removeArticle(this.data._id)
+          .then(date => {
+            this.card.remove();
+          })
+          .catch(err => console.log("removeArticleError: ", err));
       } else if (localStorage.getItem("token")) {
         if (this.savedCard) {
-          apiClass.removeArticle(this.idCard).then(date => {
-            this.savedCard = false;
-            this.idCard = null;
-            this.cardButton.children[0].classList.remove(
-              "card-area__bookmark_active"
-            );
-          });
+          mainApiElem
+            .removeArticle(this.idCard)
+            .then(date => {
+              this.savedCard = false;
+              this.idCard = null;
+              this.cardButton.children[0].classList.remove(
+                "card-area__bookmark_active"
+              );
+            })
+            .catch(err => console.log("removeArticleError: ", err));
         } else {
-          apiClass
+          mainApiElem
             .createArticle(
               this.keyword,
               this.data.title,
@@ -127,7 +131,7 @@ class NewsCard {
             .catch(err => console.log("addArticleError: ", err));
         }
       } else {
-        const popupClass = new Popup();
+        registrPopupElem.create();
       }
     } else {
       window.open(this.data.url, "_blank");
