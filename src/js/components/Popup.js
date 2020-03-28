@@ -184,7 +184,7 @@ class LoginPopup extends Popup {
           }
         })
         .catch(err => {
-          console.log("err", err.status);
+          console.log("err", err);
           if (err.status === 500 || !err.status) {
             form.setServerError("Ошибка на сервере");
           } else {

@@ -1,4 +1,10 @@
 .search__btn.search__btn_deactiv {
   color: #b6bcbf;
   background: #e6e8eb;
+  border: 1px solid #e6e8eb;
+}
+
+.search__btn.search__btn_deactiv:hover {
+  color: #b6bcbf;
+  background: #e6e8eb;
 }

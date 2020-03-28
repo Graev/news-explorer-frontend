@@ -61,9 +61,9 @@ document.forms.search.addEventListener("submit", e => {
   e.preventDefault();
   if (searchInput.value != "") {
     searchBtn.classList.add("search__btn_deactiv");
-    searchBtn.setAttribute("disabled", true);
-
+    searchBtn.disabled = true;
     document.newsCardList = new NewsCardList();
+
     const keyword = searchInput.value;
     document.newsCardList.renderLoader();
     newsApiElem
@@ -89,7 +89,7 @@ document.forms.search.addEventListener("submit", e => {
             })
             .finally(() => {
               searchBtn.classList.remove("search__btn_deactiv");
-              searchBtn.removeAttribute("disabled");
+              searchBtn.disabled = false;
             });
         } else {
           document.newsCardList.renderError();
@@ -99,6 +99,10 @@ document.forms.search.addEventListener("submit", e => {
       .catch(err => {
         console.log("removeArticle ERROR :", err);
         document.newsCardList.renderError();
+      })
+      .finally(() => {
+        searchBtn.classList.remove("search__btn_deactiv");
+        searchBtn.disabled = false;
       });
   } else {
     searchInput.placeholder = "Пустое поле";

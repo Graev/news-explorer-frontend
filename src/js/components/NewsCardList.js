@@ -10,6 +10,8 @@ const createCard = (keyword, data, userArticles) => {
 
 class NewsCardList {
   constructor() {
+    this.createCardAreaResults = this.createCardAreaResults.bind(this);
+    this.renderLoader = this.renderLoader.bind(this);
     this.cardList = [];
     this.cardUpdate = [];
     this.data = 0;
@@ -116,7 +118,7 @@ class NewsCardList {
     }
   }
 
-  createCardsAreaResults() {
+  createCardAreaResults() {
     clearElem(this.cardArea);
 
     const contant = createElem("div", "card-area__contant");

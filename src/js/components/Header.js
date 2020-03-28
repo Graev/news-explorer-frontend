@@ -8,9 +8,7 @@ class Header {
     this.headerMenuDOM = document.querySelector(".header__menu");
     this.authBtn = document.querySelector("#auth-btn");
     this.render();
-    document
-      .querySelector("#auth-btn")
-      .addEventListener("click", this._clickHandler.bind(this));
+    this.authBtn.addEventListener("click", this._clickHandler.bind(this));
   }
 
   _changeProps() {
