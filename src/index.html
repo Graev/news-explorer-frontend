@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="description" content="News search site">
+  <meta name="author" content="Graev">
+  <title>News Search</title>
+
+  <link rel="icon" href="<%=require('./images/favicon.png')%>" type="image/x-icon">
+  
+  <link rel="stylesheet" href="<%=htmlWebpackPlugin.files.chunks.main.css %>">
+
+</head>
+<body>
+  <div class="main">
+    <header class="header">
+      <div class="header__site-name">NewsExplorer</div>
+      <div class="header__menu">
+        <menu class="header__menu-container">
+          <li class="header__menu-point header__menu-point_active"><a href="./index.html">Главная</a></li>
+          <li class="header__menu-point"><a href="./lk.html">Сохранённые статьи</a></li>
+        </menu>
+        
+        <button class="header__auth-btn" id='auth-btn'>Авторизоваться</button>
+        
+      </div>
+      <div class="header__menu-btn"></div>
+    </header>
+    <div class="search">
+      <h1 class="search__title">Что в мире <br>творится?</h1>
+      <h2 class="search__description">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</h2>
+      <div class="search__input-container"><form name="search"><input type="text" class="search__input" placeholder="Введите тему новости"><button class="search__btn">Искать</button></form></div>
+      
+    </div>
+    <div class="card-area"> 
+
+    </div>
+    
+    <div class="author">
+     <img src="<%=require('./images/avatar.jpg')%>" class="author__author-img"  alt="Фотография автора">
+      <div class="author__author-container">
+        <h2 class="author__title">Об авторе</h2>
+        <div class="author__description">Мы писали, мы писали,<br>
+          Наши пальчики устали.<br>
+          Мы немножко отдохнём,<br>
+          И опять писать начнём!<br>
+          <br>
+          Мы ревьюим и дебажим,<br>
+          Но тимлиду мы докажем,<br>
+          Что наш самый главный враг –<br>
+          Трудноуловимый баг!<br>
+          <br>
+          Мы на скрамах обсуждаем,<br>
+          Что наш баг – неожидаем,<br>
+          Что без наших новых фич<br>
+          Мир охватит паралич!<br>
+          <br>
+          Мы рисуем на бумаге,<br>
+          Как мы фиксим наши баги,<br>
+          Строим график сверху вниз,<br>
+          Как мы выпустим релиз.<br>
+          </div>
+      </div>
+    </div>
+    
+    <div class="overlay">
+      
+      <div class="popup">
+        <img class="popup__close" src="<%=require('./images/close-popup.svg')%>" alt="закрыть">
+        <p class="popup__title">Вход</p>
+        <div class="popup__block">
+          <form class="popup__form" name="login">
+            <label for="email" class="popup__label">Email</label>
+            <input type="email" id="email" name="email" class="popup__input" placeholder="Введите почту" required>
+            <p class="popup__error">Неправильный формат email</p>
+            <label for="password" class="popup__label">Пароль</label>
+            <input type="password" id="password" name="password" class="popup__input" placeholder="Введите пароль" required>
+            <p class="popup__error">Неправильный формат пароля</p>
+            <p class="popup__error popup__error_btn">Пользователь не найден</p>
+            <button class="popup__button">Войти</button>
+          </form>
+          <p class="popup__link">или <a href="#" id='changePopup'>Зарегистрироваться</a></p>
+        </div>
+      </div>
+      
+    </div>
+    
+
+    <footer class="footer">
+      <div class="footer__des">© 2020 Supersite, Powered by News API</div>
+      <div class="footer__link-container">
+        <div class="footer__text-link-container">
+          <a href="./index.html" class="footer__text-link">Главная</a>
+          <a href="https://praktikum.yandex.ru" class="footer__text-link">Яндекс.Практикум</a>
+        </div>
+        <div class="footer__icon-link-container">
+          <a href="#" class="footer__icon-link"><img src="<%-require('./images/gh.svg')%>" alt="GitHub"></a>
+          <a href="#" class="footer__icon-link"><img src="<%=require('./images/fb.svg')%>" alt="Facebook"></a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="<%= htmlWebpackPlugin.files.chunks.main.entry %>"></script>
+
+</body>
+</html>

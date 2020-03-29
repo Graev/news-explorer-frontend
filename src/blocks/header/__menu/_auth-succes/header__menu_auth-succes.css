@@ -1,0 +1,27 @@
+.header__menu_auth-succes .header__auth-btn::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  background-image: url("../../../../images/logout-white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.header__menu_auth-succes
+  .header__menu-container
+  .header__menu-point:nth-child(2) {
+  display: flex;
+}
+
+.header_lk .header__menu_auth-succes .header__auth-btn::after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  margin-left: 4px;
+  background-image: url("../../../../images/logout-black.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

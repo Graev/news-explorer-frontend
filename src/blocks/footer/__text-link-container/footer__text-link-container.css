@@ -1,0 +1,11 @@
+.footer__text-link-container {
+  display: flex;
+
+  margin-right: 45px;
+}
+
+@media all and (max-width: 768px) {
+  .footer__text-link-container {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,13 @@
+@import "./_active/card-area__bookmark_active.css";
+
+.card-area__bookmark {
+  width: 14px;
+  height: 19px;
+
+  background-image: url("../../../images/bookmark.svg");
+  background-size: cover;
+}
+
+.card-area__card-button:hover .card-area__bookmark {
+  background-image: url("../../../images/bookmark-black.svg");
+}

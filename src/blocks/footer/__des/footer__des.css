@@ -1,0 +1,14 @@
+.footer__des {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8em;
+  line-height: 1.375;
+
+  color: #b6bcbf;
+}
+
+@media all and (max-width: 768px) {
+  .footer__des {
+    order: 2;
+  }
+}

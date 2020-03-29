@@ -1,0 +1,23 @@
+.card-area__btn {
+  height: 64px;
+  width: 288px;
+
+  background: #ffffff;
+  border-radius: 80px;
+
+  border: none;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1.33;
+  color: #1a1b22;
+
+  justify-self: center;
+
+  cursor: pointer;
+}
+
+.card-area__btn:hover {
+  opacity: 0.9;
+}

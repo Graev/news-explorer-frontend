@@ -1,0 +1,12 @@
+.card-area__contant {
+  display: grid;
+  max-width: 1360px;
+  grid-column: 1fr 1fr 1fr;
+  gap: 64px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__contant {
+    gap: 32px;
+  }
+}

@@ -1,0 +1,95 @@
+.header.header_active {
+  background-color: #1a1b22;
+  z-index: 6;
+  padding: 0px;
+}
+
+.header_active > .header__site-name {
+  margin-left: 16px;
+  color: #ffffff;
+}
+
+.header_active > .header__menu-btn {
+  margin-right: 16px;
+  background-image: url("../../../images/close-popup.svg");
+}
+
+.header_active > .header__menu {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  top: 56px;
+
+  box-sizing: border-box;
+  padding: 16px 16px 24px;
+
+  height: auto;
+
+  background: #1a1b22;
+
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
+
+.header_active > .header__menu > .header__menu-container {
+  flex-direction: column;
+
+  margin-right: 0px;
+
+  width: 100%;
+}
+
+.header_active > .header__menu > .header__menu-container > .header__menu-point {
+  height: 30px;
+  width: 100%;
+
+  font-family: Roboto, Arial;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+
+  margin-right: 0px;
+  margin-left: 0px;
+  margin-bottom: 22px;
+
+  justify-content: start;
+  /* or 311% */
+
+  /* main/white */
+
+  color: #ffffff;
+}
+
+.header_active
+  > .header__menu
+  > .header__menu-container
+  > .header__menu-point_active {
+  border-bottom: none;
+  pointer-events: all;
+  cursor: pointer;
+  color: inherit;
+  color: #ffffff;
+}
+
+.header_active > .header__menu > .header__auth-btn {
+  width: 100%;
+  height: 56px;
+
+  border: 1px solid #ffffff;
+  box-sizing: border-box;
+  border-radius: 100px;
+  background-color: #1a1b22;
+
+  color: #ffffff;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.header_active .header__menu_auth-succes .header__auth-btn:after {
+  background-image: url("../../../images/logout-white.svg");
+}

@@ -1,0 +1,12 @@
+.card-area__trash {
+  width: 24px;
+  height: 24px;
+
+  background-image: url("../../../images/trash.svg");
+  background-size: cover;
+}
+
+.card-area__card-button:hover .card-area__trash {
+  background-image: url("../../../images/trash-hover.svg");
+  background-size: cover;
+}

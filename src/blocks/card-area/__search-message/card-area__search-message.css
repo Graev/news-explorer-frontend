@@ -1,0 +1,14 @@
+.card-area__search-message {
+  margin-top: 24px;
+  margin-bottom: 0px;
+
+  font-family: Roboto, Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  text-align: center;
+
+  color: #b6bcbf;
+}

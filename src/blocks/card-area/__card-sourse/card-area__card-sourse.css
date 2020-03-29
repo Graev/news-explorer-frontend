@@ -1,0 +1,26 @@
+.card-area__card-sourse {
+  font-family: Roboto Slab, Arial;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 0.8em;
+  line-height: 1.25;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #b6bcbf;
+
+  margin: 0px;
+
+  margin-top: auto;
+
+  position: absolute;
+
+  left: 24px;
+  bottom: 24px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__card-sourse {
+    left: 16px;
+    bottom: 16px;
+  }
+}

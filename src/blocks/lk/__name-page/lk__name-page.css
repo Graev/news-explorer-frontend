@@ -1,0 +1,17 @@
+.lk__name-page {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(26, 27, 34, 0.5);
+
+  margin: 0;
+  margin-bottom: 28px;
+}
+
+@media all and (max-width: 767px) {
+  .lk__name-page {
+    font-size: 12px;
+    margin-bottom: 16px;
+  }
+}

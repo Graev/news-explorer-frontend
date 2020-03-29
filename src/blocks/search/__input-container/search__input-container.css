@@ -1,0 +1,9 @@
+.search__input-container {
+  position: relative;
+}
+
+@media all and (max-width: 767px) {
+  .search__input-container {
+    width: 100%;
+  }
+}

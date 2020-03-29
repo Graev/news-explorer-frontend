@@ -1,0 +1,21 @@
+.footer__text-link {
+  margin-right: 20px;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  text-decoration: none;
+  color: inherit;
+}
+
+.footer__text-link:last-child {
+  margin-right: 0px;
+}
+
+@media all and (max-width: 768px) {
+  .footer__text-link {
+    margin-bottom: 38px;
+  }
+}

@@ -1,0 +1,13 @@
+.author__author-container {
+  padding-top: 51px;
+  box-sizing: border-box;
+
+  width: 600px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .author__author-container {
+    width: 424px;
+    padding-top: 40px;
+  }
+}

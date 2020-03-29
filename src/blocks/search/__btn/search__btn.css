@@ -1,0 +1,40 @@
+@import "./_deactiv/search__btn_deactiv.css";
+
+.search__btn {
+  position: absolute;
+  right: 0px;
+  z-index: 2;
+
+  width: 168px;
+  height: 64px;
+  background: #2f71e5;
+
+  border: 1px solid #2f71e5;
+  box-sizing: border-box;
+  box-shadow: 0px 5px 15px rgba(14, 26, 57, 0.2);
+  border-radius: 100px;
+
+  color: #fff;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 0.9em;
+  line-height: 1.33;
+
+  cursor: pointer;
+}
+
+.search__btn:hover {
+  background: #347eff;
+}
+
+.search__btn:focus {
+  background: #2a65cc;
+}
+
+@media all and (max-width: 767px) {
+  .search__btn {
+    position: relative;
+    width: 100%;
+  }
+}

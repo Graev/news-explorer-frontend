@@ -1,0 +1,10 @@
+@import "./__des/lk__des.css";
+@import "./__key-words/lk__key-words.css";
+@import "./__name-page/lk__name-page.css";
+@import "./__title/lk__title.css";
+
+.lk {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}

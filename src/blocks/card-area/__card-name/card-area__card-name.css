@@ -1,0 +1,18 @@
+.card-area__card-name {
+  font-family: Roboto Slab, Arial;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 1.3em;
+  line-height: 1.15;
+  color: #1a1b22;
+
+  margin: 0px;
+  margin-bottom: 16px;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area__card-name {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+  }
+}

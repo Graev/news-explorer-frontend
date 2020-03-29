@@ -1,0 +1,7 @@
+@import "../vendor/normalize.css";
+@import "../vendor/font.css";
+@import "../blocks/main/main.css";
+@import "../blocks/header/header.css";
+@import "../blocks/lk/lk.css";
+@import "../blocks/card-area/card-area.css";
+@import "../blocks/footer/footer.css";

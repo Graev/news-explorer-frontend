@@ -1,0 +1,16 @@
+.lk__key-words {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1a1b22;
+
+  margin: 0;
+  margin-bottom: 56px;
+}
+
+@media all and (max-width: 767px) {
+  .lk__key-words {
+    margin-bottom: 0px;
+  }
+}

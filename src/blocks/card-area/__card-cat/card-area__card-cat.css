@@ -1,0 +1,24 @@
+.card-area__card-cat {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  position: absolute;
+
+  width: 88px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 10px;
+
+  z-index: 2;
+
+  top: 24px;
+  left: 24px;
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+
+  color: #000000;
+}

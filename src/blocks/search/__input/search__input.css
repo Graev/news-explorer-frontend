@@ -1,0 +1,42 @@
+@import "./_error/search__input_error.css";
+
+.search__input {
+  width: 608px;
+  height: 64px;
+
+  border: 1px solid #d1d2d6;
+  box-sizing: border-box;
+  border-radius: 100px;
+
+  padding-left: 24px;
+
+  position: relative;
+
+  color: #b6bcbf;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8em;
+  line-height: 1.375;
+}
+
+.search__input::placeholder {
+  color: #b6bcbf;
+
+  font-style: normal;
+  font-weight: normal;
+  font-size: 0.8em;
+  line-height: 1.375;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .search__input {
+    width: 452px;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .search__input {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}

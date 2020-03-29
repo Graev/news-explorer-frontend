@@ -1,0 +1,54 @@
+@import "./__card-container/card-area__card-container.css";
+@import "./__card-button/card-area__card-button.css";
+@import "./__card-img/card-area__card-img.css";
+@import "./__card/card-area__card.css";
+@import "./__card-date/card-area__card-date.css";
+@import "./__card-description-container/card-area__card-description-container.css";
+@import "./__card-text/card-area__card-text.css";
+@import "./__card-name/card-area__card-name.css";
+@import "./__card-sourse/card-area__card-sourse.css";
+@import "./__title/card-area__title.css";
+@import "./__contant/card-area__contant.css";
+@import "./__btn/card-area__btn.css";
+@import "./__bookmark/card-area__bookmark.css";
+@import "./__auth-message/card-area__auth-message.css";
+@import "./__search-message/card-area__search-message.css";
+@import "./__not-found-img/card-area__not-found-img.css";
+@import "./__not-found-title/card-area__not-found-title.css";
+@import "./__not-found-message/card-area__not-found-message.css";
+@import "./__trash/card-area__trash.css";
+@import "./__delete-message/card-area__delete-message.css";
+@import "./__card-cat/card-area__card-cat.css";
+
+.card-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f5f6f7;
+
+  color: #1a1b22;
+
+  position: relative;
+
+  font-size: 20px;
+
+  transition: height 0.5s linear;
+}
+
+.card-area_result {
+  min-height: 282px;
+  padding: 80px 40px;
+  box-sizing: border-box;
+}
+
+@media all and (max-width: 1024px) and (min-width: 768px) {
+  .card-area {
+    padding: 40px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .card-area {
+    padding: 32px 16px;
+  }
+}
