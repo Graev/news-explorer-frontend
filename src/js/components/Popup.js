@@ -15,9 +15,11 @@ class Popup {
     this.popupBlock = document.querySelector(".popup__block");
     this.overlayDOM = document.querySelector(".overlay");
     this.popupDOM = document.querySelector(".popup");
-    document.querySelector(".popup__close").addEventListener("click", () => {
-      this.close();
-    });
+    if (document.querySelector(".popup__close")) {
+      document.querySelector(".popup__close").addEventListener("click", () => {
+        this.close();
+      });
+    }
     this.popupTitle = document.querySelector(".popup__title");
   }
 
@@ -167,6 +169,7 @@ class LoginPopup extends Popup {
 
     const form = loginFormElem.create();
     const popupBtn = form.querySelector(".popup__button");
+
     form.addEventListener("submit", event => {
       event.preventDefault();
 
@@ -229,4 +232,4 @@ class SuccessPopup extends Popup {
   }
 }
 
-export { Popup, RegistrPopup, LoginPopup, SuccessPopup };
+export { RegistrPopup, LoginPopup, SuccessPopup };

@@ -58,8 +58,8 @@ class NewsCardList {
     this.cardArea.append(message);
   }
 
-  _addCard(keyword, card, userArticles) {
-    const cardElem = createCard(keyword, card, userArticles);
+  _addCard(keyword, card, userArticles, mainApi) {
+    const cardElem = createCard(keyword, card, userArticles, mainApi);
     this.cardList.push(cardElem);
     this.cardUpdate.push(cardElem.renderIcon);
   }

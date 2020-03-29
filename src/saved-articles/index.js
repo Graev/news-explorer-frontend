@@ -8,14 +8,14 @@ import mobileMenu from "../js/utils/mobileMenu";
 
 mobileMenu();
 
-const apiClass = new MainApi();
+const mainApiElem = new MainApi();
 
 if (localStorage.getItem("token")) {
-  const userData = apiClass.getUserData();
+  const userData = mainApiElem.getUserData();
   userData
     .then(userData => {
-      const headerClass = new Header(true, userData.data.name);
-      apiClass.getArticles().then(data => {
+      const headerClass = new Header(true, userData.data.name, mainApiElem);
+      mainApiElem.getArticles().then(data => {
         const str = num2str(data.data.length, [
           "сохранённая статья",
           "сохранённые статьи",
@@ -32,7 +32,12 @@ if (localStorage.getItem("token")) {
         document.newsCardList.renderLoader();
 
         if (data.data.length) {
-          document.newsCardList.setCardsToList(data.data);
+          document.newsCardList.setCardsToList(
+            data.data,
+            null,
+            null,
+            mainApiElem
+          );
           document.newsCardList.renderResults();
           document.newsCardList.createCardAreaResults();
         } else {

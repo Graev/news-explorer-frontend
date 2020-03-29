@@ -1,6 +1,5 @@
 import createElem from "../utils/createElem";
-import { mainApiElem } from "../../index";
-import { registrPopupElem } from "../../index";
+import { registrPopupElem, mainApiElem } from "../../index";
 
 class NewsCard {
   constructor(keyword, data, userArticles) {
